@@ -13,6 +13,9 @@ inherit uuu_bootloader_tag
 # is imx-boot, so disable UUU-tagging here
 UUU_BOOTLOADER:mx8-generic-bsp = ""
 UUU_BOOTLOADER:mx9-generic-bsp = ""
+UUU_BOOTLOADER_UNTAGGED                 = ""
+UUU_BOOTLOADER_UNTAGGED:mx6-generic-bsp = "u-boot-untagged.${UBOOT_SUFFIX}"
+UUU_BOOTLOADER_UNTAGGED:mx7-generic-bsp = "u-boot-untagged.${UBOOT_SUFFIX}"
 
 TOOLCHAIN_OPTIONS:append = " -Wno-error=implicit-function-declaration"
 
