@@ -1,4 +1,4 @@
-FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend:imx-nxp-bsp := "${THISDIR}/${PN}:"
 
 DEPENDS:append:imx-nxp-bsp = " readline"
 
