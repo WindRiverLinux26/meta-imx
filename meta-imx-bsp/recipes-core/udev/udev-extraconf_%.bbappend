@@ -1,12 +1,9 @@
 # Freescale i.MX SOC extra configuration udev rules
-FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend:imx-nxp-bsp := "${THISDIR}/${PN}:"
 
-SRC_URI:append:mx6-nxp-bsp = " file://blacklist.conf "
-SRC_URI:append:mx7-nxp-bsp = " file://blacklist.conf"
-SRC_URI:append:mx8-nxp-bsp = " file://blacklist.conf"
-SRC_URI:append:mx9-nxp-bsp = " file://blacklist.conf"
+SRC_URI:append:imx-nxp-bsp = " file://blacklist.conf"
 
-do_install:prepend () {
+do_install:prepend:imx-nxp-bsp () {
     if [ -e "${UNPACKDIR}/blacklist.conf" ]; then
         install -d ${D}${sysconfdir}/modprobe.d
         install -m 0644 ${UNPACKDIR}/blacklist.conf ${D}${sysconfdir}/modprobe.d
@@ -14,7 +11,7 @@ do_install:prepend () {
 }
 
 
-FILES:${PN}:append = " ${sysconfdir}/modprobe.d"
+FILES:${PN}:append:imx-nxp-bsp = " ${sysconfdir}/modprobe.d"
 
 PACKAGE_ARCH:mx6-nxp-bsp = "${MACHINE_SOCARCH}"
 PACKAGE_ARCH:mx7-nxp-bsp = "${MACHINE_SOCARCH}"
