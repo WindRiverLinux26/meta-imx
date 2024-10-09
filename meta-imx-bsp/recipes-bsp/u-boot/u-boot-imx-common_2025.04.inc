@@ -5,6 +5,7 @@ LIC_FILES_CHKSUM = "file://Licenses/gpl-2.0.txt;md5=b234ee4d69f5fce4486a80fdaf4a
 
 SRC_URI = "${UBOOT_SRC};branch=${SRCBRANCH} \
 	file://efi.cfg \
+	file://extra.cfg \
 "
 
 UBOOT_SRC ?= "git://github.com/nxp-imx/uboot-imx.git;protocol=https"
