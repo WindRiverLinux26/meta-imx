@@ -53,6 +53,7 @@ do_install:append:mx95-nxp-bsp (){
     install -m 0755 ${S}/nxp/crypto_perf_test.sh ${D}${bindir}/
     install -d ${D}/${sysconfdir}/dpdk
     install -m 0644 ${S}/nxp/ipsec/*.cfg ${D}/${sysconfdir}/dpdk
+    install -m 0755 -d ${D}/${datadir}/dpdk/
 }
 
 RDEPENDS:${PN} = "kernel-module-dpdk-extras pciutils python3-core bash"
