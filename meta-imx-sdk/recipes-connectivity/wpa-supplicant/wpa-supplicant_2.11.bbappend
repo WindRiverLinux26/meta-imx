@@ -6,6 +6,8 @@ SRC_URI:remove:imx-nxp-bsp = "http://w1.fi/releases/wpa_supplicant-${PV}.tar.gz 
                               file://0001-macsec_linux-Hardware-offload-requires-Linux-headers.patch \
 "
 
+PACKAGECONFIG:append:imx-nxp-bsp := " openssl"
+
 SRC_URI:append:imx-nxp-bsp = " ${FSL_MIRROR}/wpa_supplicant-${PV}-${IMX_SRCREV_ABBREV}.tar.gz"
 IMX_SRCREV_ABBREV = "aaa7ec2f"
 SRC_URI[sha256sum] = "10d31e37d6d08a7d383e907aac252895d42518e9cd53d122d6591e08f0f1cd87"
