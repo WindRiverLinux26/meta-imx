@@ -1,0 +1,41 @@
+From a0cd3b5a0424f80d654f0bb6176673bca3e713b2 Mon Sep 17 00:00:00 2001
+From: Ruiqiang Hao <Ruiqiang.Hao@windriver.com>
+Date: Mon, 23 Jun 2025 09:41:28 +0000
+Subject: [PATCH] meson.build: Support NumPy >= 2.2 header path changes
+
+Since NumPy 2.2.0, header files have moved from `numpy/core/include` to
+`numpy/_core/include` due to the transition to the Meson build system.
+This patch updates `meson.build` to reflect the new path, ensuring
+successful builds with newer NumPy versions.
+
+Note: This update does not maintain compatibility with older NumPy
+(< 2.2.0).
+
+Upstream-Status: Pending
+
+Signed-off-by: Ruiqiang Hao <Ruiqiang.Hao@windriver.com>
+Signed-off-by: Xiaolei Wang <xiaolei.wang@windriver.com>
+---
+ meson.build | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/meson.build b/meson.build
+index 17fbabba..6ab2cf1a 100644
+--- a/meson.build
++++ b/meson.build
+@@ -455,10 +455,10 @@ if not get_option('python3-support').disabled()
+ 
+     python3_inc_args = []
+     python3_inc_args += run_command(pg_pkgconfig, ['python3', '--cflags'], check : true).stdout().strip().split()
+-    python3_inc_args += run_command('python3', ['-c', 'import site\nfor i in site.getsitepackages(): print("-I" + i + "/numpy/core/include")'], check : true).stdout().strip().split()
++    python3_inc_args += run_command('python3', ['-c', 'import site\nfor i in site.getsitepackages(): print("-I" + i + "/numpy/_core/include")'], check : true).stdout().strip().split()
+     r = run_command('python3', ['-m', 'site', '--user-site'], check : false)
+     if r.returncode() == 0
+-      python3_inc_args += '-I' + r.stdout().strip() + '/numpy/core/include'
++      python3_inc_args += '-I' + r.stdout().strip() + '/numpy/_core/include'
+     endif
+     python3_inc_valid_args = []
+ 
+-- 
+2.34.1
+
