@@ -8,4 +8,4 @@ SRC_URI_IMX ??= " \
     file://0003-Remove-support-for-eglBindWaylandDisplayWL.patch \
     file://0004-LF-16605-Disable-dma-buf-import-extensions-for-softp.patch"
 
-PACKAGE_ARCH:imx-nxp-bsp = "${MACHINE_SOCARCH}"
+PACKAGE_ARCH:imx-nxp-bsp:class-target = "${MACHINE_SOCARCH}"
