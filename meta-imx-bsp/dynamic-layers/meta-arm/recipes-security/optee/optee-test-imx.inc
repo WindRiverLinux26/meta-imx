@@ -1,5 +1,8 @@
 require recipes-security/optee/optee-test.inc
 
+inherit features_check
+REQUIRED_MACHINE_FEATURES = "optee"
+
 DEPENDS += "openssl"
 
 FILESEXTRAPATHS:prepend := "${THISDIR}/optee-test:"
